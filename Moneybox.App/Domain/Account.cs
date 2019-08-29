@@ -22,7 +22,7 @@ namespace Moneybox.App
         public void Withdraw(decimal amount)
         {
             // Checks if there is enough money to make a withdraw
-            if (!canWithdraw(amount))
+            if (!CanWithdraw(amount))
                 throw new InvalidOperationException("Insufficient funds to make transfer");
 
             // Calculates the Transaction
@@ -30,7 +30,7 @@ namespace Moneybox.App
             this.Withdrawn = this.Withdrawn - amount;
         }
 
-        public bool canWithdraw(decimal amount)
+        public bool CanWithdraw(decimal amount)
         {
 
             var newBalance = this.Balance - amount;
