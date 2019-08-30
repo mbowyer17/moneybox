@@ -20,16 +20,18 @@ namespace Moneybox.App.Features
             // TODO:
             var from = this.accountRepository.GetAccountById(fromAccountId);
 
-
             // Calculate the Transaction
             from.Withdraw(amount);
 
-            // Checked the balance
-            if (from.IsLowBalance())
-                this.notificationService.NotifyFundsLow(from.User.Email);
-
             // Update the account 
             this.accountRepository.Update(from);
+
+            // Checked the balance
+            if (from.Balance < 500m)
+            {
+                this.notificationService.NotifyFundsLow(from.User.Email);
+            }
+
 
         }
     }
