@@ -6,7 +6,7 @@ namespace Moneybox.App
     {
         public const decimal PayInLimit = 4000m;
         public const decimal WithdrawLimit = 0m;
-        public const decimal LowBalance = 500m;
+       
 
         public Guid Id { get; set; }
 
@@ -37,15 +37,6 @@ namespace Moneybox.App
             return newBalance >= WithdrawLimit;
         }
 
-        public bool BalanceLowAfterWithdraw (decimal amount)
-        {
-            var newBalance = this.Balance - amount;
-            return newBalance <= LowBalance;
-        }
-
-        public bool IsLowBalance()
-        {
-            return BalanceLowAfterWithdraw(0);
-        }
+        
     }
 }
